@@ -18,22 +18,7 @@ const board = document.querySelector('.board')
  } ]
 
  let direction = 'down'
-//  For ex rows * cols : 100, toh yeh loop 100 bar chlega and i=0 means block1 , i=1 means block2 in this way  
-//  for(let i = 0 ; i < rows * cols; i++) {
 
-   // jitni bar looop repeat ho ek div bne means ek block bne 
-   //  const block = document.createElement('div');
-   
-//    //  blocks joh bne unko style.css me joh block class di thi woh deti 
-
-
-//     block.classList.add("block")
-
-//    //  joh blocks banye unko board ke andr dalna h :
-
-
-//     board.appendChild(block);
-//  }
 
 
 for (let row = 0; row < rows; row++){
