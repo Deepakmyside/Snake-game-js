@@ -101,6 +101,7 @@ section .infos {
 .block{
 
     border: 1px solid var(--border-primary-color);
+    border-radius: 50%;
     
 }
 
@@ -136,4 +137,9 @@ section .infos {
 
 .modal .game-over{
     display:none;
+}
+
+
+.head{
+    background-color: yellow;
 }
