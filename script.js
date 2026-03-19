@@ -158,7 +158,11 @@ board.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX
   startY = e.touches[0].clientY
 })
- 
+
+board.addEventListener("touchmove", (e) => {
+  e.preventDefault()
+}, { passive: false })
+
 board.addEventListener("touchend",(e) => {
   let endX = e.changedTouches[0].clientX
   let endY = e.changedTouches[0].clientY
