@@ -28,6 +28,9 @@ const timeElement = document.querySelector('#time')
    x: 1, y: 3
  } ]
 
+   let startX = 0 
+   let startY = 0
+   
  let direction = 'down'
   let intervalId = null;
   let timerIntervalId = null;
@@ -149,8 +152,35 @@ function startTimer(){
   })
  
 
- restartButton.addEventListener("click", restartGame)
+restartButton.addEventListener("click", restartGame)
 
+board.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX
+  startY = e.touches[0].clientY
+})
+ 
+board.addEventListener("touchend",(e) => {
+  let endX = e.changedTouches[0].clientX
+  let endY = e.changedTouches[0].clientY
+
+
+  let dx = endX - startX
+  let dy = endY - startY
+
+  if(Math.abs(dx) > Math.abs(dy)) {
+     if(dx > 0) {
+      direction = "right"
+     }else {
+      direction= "left"
+     }
+  }else {
+    if (dy > 0) {
+      direction = "down"
+    }else {
+      direction = "up"
+    }
+  }
+})
  function restartGame(){
 
   
