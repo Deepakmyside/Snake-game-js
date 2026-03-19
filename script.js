@@ -121,28 +121,41 @@ function render(){
 
 // setInterval function means har 300(millisecond time) ke bad render function automatically call ho jayega 
 
+function startTimer(){
+  clearInterval(timerIntervalId)
 
- startButton.addEventListener("click", () => {
-  modal.style.display="none"
-  intervalId= setInterval(() => {render()}, 300)
-  timerIntervalId = setInterval(() => {
-    let [ min, sec ] =time.split("-").map(Number)
+  timerIntervalId= setInterval(() => {
+     let [ min, sec ] =time.split("-").map(Number)
 
-    if(sec==59){
+      if(sec==59){
       min += 1
       sec = 0
     }else{
       sec+=1
     }
-
-    time = `${min}-${sec}`
+    time = `${min}-${sec < 10 ? '0' :''}${sec}`
     timeElement.innerText = time
   },1000)
- } )
+}
+ startButton.addEventListener("click", () => {
+  modal.style.display="none"
+  intervalId= setInterval(() => {render()}, 300)
+  startTimer()
+   
+
+   
+
+    
+  })
+ 
 
  restartButton.addEventListener("click", restartGame)
 
  function restartGame(){
+
+  
+clearInterval(intervalId)
+clearInterval(timerIntervalId)
   
   blocks[`${food.x}-${food.y}`].classList.remove("food")
   snake.forEach((segment,index) => {
@@ -163,15 +176,17 @@ function render(){
 
   scoreElement.innerText = score
   highScoreElement.innerText = highScore
-  timeElement.innerText = time 
+  timeElement.innerText = time
 
   
   food= { x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols)}
-   intervalId = setInterval(() => {render( )}, 300)
+   
+
+   intervalId = setInterval(render,300)
+   startTimer()
+   
  }
 
-clearInterval(intervalId)
-clearInterval(timerIntervalId)
 
 addEventListener("keydown",(event)=>{
      if(event.key=="ArrowUp"){
