@@ -14,6 +14,7 @@ html,body{
     /*  Background color */
     --bg-primary-color: #0c0c0c;
     --bg-fill-color: #fdfdfc;
+    --bg-food-color: red;
     /* Text color */
     --text-primary-color: #f0f0f0;
 
@@ -49,12 +50,27 @@ main,section{
 
 }
 
+.btn{
+    padding:var(--space-sm) var(--space-md);
+    border:none;
+    border-radius: var(--border-radius-sm);
+    cursor:pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+    background-color: #1c511d;
+    color:white;
+    border: 1px solid rgb(218, 218, 168)
+}
 section{
          padding: var(--space-2xl);
          display:flex;
          flex-direction: column;
          height:100%; 
-         gap: var(--space-lg)
+         gap: var(--space-lg);
 
 }
 
@@ -90,4 +106,34 @@ section .infos {
 
 .fill{
     background-color: var(--bg-fill-color);
+}
+
+.food{
+    background-color: var(--bg-food-color);
+}
+
+.modal{
+    height:100vh;
+    width: 100vw;
+    position:fixed;
+    top: 0;
+    background-color:#4343432f;
+    backdrop-filter: blur(4px);
+    display:flex;
+    justify-content: center;
+    align-items: center ;
+    
+    
+}
+
+.modal .start-game,
+.modal .game-over {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg)
+}
+
+.modal .game-over{
+    display:none;
 }
